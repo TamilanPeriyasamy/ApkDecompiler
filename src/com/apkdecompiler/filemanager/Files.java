@@ -20,6 +20,7 @@ public class Files {
 	public static String mAAPTPath        = mBuildToolsPath+File.separator+"aapt";
 	public static String mZipalign        = mBuildToolsPath+File.separator+"zipalign";
 	public static String mApkSigner       = mBuildToolsPath+File.separator+"apksigner";
+	public static String mKeyStorePath    = mBuildToolsPath+File.separator+"key-store.jks";
 	public static String mAndroidSdkPath  = ApkDecompiler.mAndSdkPath;
 	public static String mAndroidJarPath  = mBuildToolsPath+File.separator+"lib"+File.separator+"android.jar";
 	/*mAndroidAAPTPath = mAndroidSdkPath+"/build-tools/28.0.2/aapt";
@@ -33,7 +34,7 @@ public class Files {
 	public static File mOutputDirectory  = null;
 	public static String mApkFileName    = null;
 	public static File mApkBuildDir      = null;
-	public static File mApkResDir    = new File(mApkBuildDir+File.separator+"res");
+	public static File mApkResDir        = null;//
 	
 	//public static File mInputPath   = new File(ApkDecompiler.mInputPath);
 	//public static File mOutputPath  = new File(ApkDecompiler.mOutputPath);
