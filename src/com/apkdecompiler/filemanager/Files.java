@@ -27,15 +27,17 @@ public class Files {
 	mApkSigner       = mAndroidSdkPath+"/build-tools/28.0.2/apksigner";
 	mAndroidJarPath  = mAndroidSdkPath+"/platforms/android-28/android.jar";*/
 	
-	
-	public static File mInputFile   = new File(ApkDecompiler.mInputFile);
-	public static File mInputDir    = new File(ApkDecompiler.mInputDir);
-	public static File mOutputFile  = new File(ApkDecompiler.mOutputFile);
-	public static File mOutputDir   = new File(ApkDecompiler.mOutputDir);
-	public static File mInputApk    = mInputFile;
-	public static File mOutputApk   = mOutputFile;
-	
-	public static String mApkName    = mInputFile.getName().replace(".apk","");
-	public static File mApkBuildDir  = new File(mOutputDir+File.separator+mApkName);
+	public static File mInputApkFile     = null;
+	public static File mOutputApkFile    = null;
+	public static File mInputDirectory   = null;
+	public static File mOutputDirectory  = null;
+	public static String mApkFileName    = null;
+	public static File mApkBuildDir      = null;
 	public static File mApkResDir    = new File(mApkBuildDir+File.separator+"res");
+	
+	//public static File mInputPath   = new File(ApkDecompiler.mInputPath);
+	//public static File mOutputPath  = new File(ApkDecompiler.mOutputPath);
+	//public static String mApkFileName    = mInputPath.getName().replace(".apk","");
+	
+	
 }

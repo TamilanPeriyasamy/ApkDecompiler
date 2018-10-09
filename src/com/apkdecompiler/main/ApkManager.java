@@ -33,7 +33,7 @@ public class ApkManager {
 	public ApkManager() {
 	
 		mApkBuildDir     = Files.mApkBuildDir;
-		mOutputApk       = Files.mOutputFile;
+		mOutputApk       = Files.mOutputApkFile;
 		zipalign         = Files.mZipalign;
 		apkSigner        = Files.mApkSigner;
 		KeyStorePath     = Files.mBuildToolsPath+File.separator+"key-store.jks";
@@ -57,7 +57,7 @@ public class ApkManager {
 		//System.out.println(" "+mApkFile);
 		int bytes=0;
 		byte buffer[] = new byte[1024];
-		ZipFile zipFile = new ZipFile(Files.mInputFile);
+		ZipFile zipFile = new ZipFile(Files.mInputApkFile);
 		Enumeration<? extends ZipEntry> e = zipFile.entries();
 		while (e.hasMoreElements()) {
 			ZipEntry entry = e.nextElement();

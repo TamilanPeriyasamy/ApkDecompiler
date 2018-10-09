@@ -2,3 +2,7 @@ bin/
 bin/*
 logs/
 logs/*
+libs/
+libs/*
+tools/framework/
+tools/framework/*

@@ -1,5 +1,7 @@
 package com.apkdecompiler.main;
 
+import java.io.File;
+
 import com.apkdecompiler.filemanager.Files;
 import com.apkdecompiler.logger.LogFile;
 import com.apkdecompiler.resources.AndroidResources;
@@ -10,10 +12,10 @@ import com.apkdecompiler.xmlbuilder.DecodeResXMLFiles;
 public class ApkDecompiler {
 
 
-	public static String  mInputFile   = null;
-	public static String  mInputDir    = null;
-	public static String  mOutputFile  = null;
-	public static String  mOutputDir   = null;
+	public static String  mInputPath   = null;
+	//public static String  mInputDir    = null;
+	public static String  mOutputPath  = null;
+	//public static String  mOutputDir   = null;
 	public static boolean mDecompile   = false;
 	public static boolean mBuuild      = false;
 	public static boolean mSign        = false;
@@ -42,14 +44,12 @@ public class ApkDecompiler {
 
 
 			if(args[count].startsWith("-i:")) { // mInputFile or mInputDir
-				mInputFile = args[count].replace("-i:", "").trim();
-				mInputDir  = args[count].replace("-i:", "").trim();
+				mInputPath = args[count].replace("-i:", "").trim();
 			}
 
 
 			if(args[count].startsWith("-o:")) { // mOutputFile or mOutputDir
-				mOutputFile = args[count].replace("-o:", "").trim();
-				mOutputDir  = args[count].replace("-o:", "").trim();
+				mOutputPath = args[count].replace("-o:", "").trim();
 			}	
 
 			if(args[count].startsWith("-sign")) { // mSign
@@ -60,32 +60,43 @@ public class ApkDecompiler {
 
 		if(mDecompile) {
 
-			if(Files.mInputFile.isFile() && Files.mInputFile.getName().endsWith(".apk")) {
-				if(Files.mOutputDir.isDirectory()) {
-					if(!Files.mOutputDir.exists()) {
-						Files.mOutputDir.mkdirs();
+			if(new File(mInputPath).isFile() && new File(mInputPath).getName().endsWith(".apk")) {
+				if(new File(mOutputPath).isDirectory()) {
+					if(!new File(mOutputPath).exists()) {
+						new File(mOutputPath).mkdirs();
 					}
+					Files.mInputApkFile    = new File(mInputPath);
+					Files.mOutputDirectory = new File(mOutputPath);
+					Files.mApkFileName     = Files.mInputApkFile.getName().replace(".apk", "");
+					Files.mApkBuildDir     = new File(mOutputPath+File.separator+Files.mApkFileName);
 					decompileApkFile();
+					
 				}else {
-					System.err.println(" output dir is invalid "+Files.mOutputDir);
+					System.err.println(" output dir is invalid "+mOutputPath);
 					System.exit(0);
 				}
 			}else {
-				System.err.println(" input file is invalid "+Files.mInputFile);
+				System.err.println(" input file is invalid "+mInputPath);
 				System.exit(0);
 			}
 		}
 
 		if(mBuuild) {
-			if(Files.mInputDir.isDirectory() && Files.mInputDir.exists()) {
-				if(Files.mOutputFile.getName().endsWith(".apk")) {
+			if(new File(mInputPath).isDirectory() && new File(mInputPath).exists()) {
+				if(new File(mOutputPath).getName().endsWith(".apk")) {
+					
+					Files.mOutputApkFile    =new File(mOutputPath);
+					Files.mInputDirectory =new File(mInputPath);
+					Files.mApkFileName=Files.mInputApkFile.getName().replace(".apk", "");
+					Files.mApkBuildDir     = new File(mInputPath+File.separator+Files.mApkFileName);
 					buildApkFile();
+					
 				}else {
-					System.err.println(" output file is invalid "+Files.mOutputFile);
+					System.err.println(" output file is invalid "+mOutputPath);
 					System.exit(0);
 				}
 			}else {
-				System.err.println(" input dir is invalid "+Files.mInputDir);
+				System.err.println(" input dir is invalid "+mInputPath);
 				System.exit(0);
 			}
 			if(mSign) {
