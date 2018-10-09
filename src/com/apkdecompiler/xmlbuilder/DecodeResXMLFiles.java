@@ -22,7 +22,7 @@ public class DecodeResXMLFiles {
 	File mApkExtractPath=null;
 	public static String  mCurrentXmlName=null;
 	public DecodeResXMLFiles() {
-		mApkFile=Files.mInputPath;
+		mApkFile=Files.mInputApkFile;
 		mApkExtractPath=Files.mApkBuildDir;
 	}
 

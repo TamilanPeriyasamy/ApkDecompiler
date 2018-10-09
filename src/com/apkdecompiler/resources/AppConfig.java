@@ -20,7 +20,7 @@ public class AppConfig {
 	public static String app_name          = null;
 	
 	public AppConfig(){
-	  mApkFile=Files.mInputPath;
+	  mApkFile=Files.mInputApkFile;
 	}
 
 	public void getAppDetails() throws Exception {

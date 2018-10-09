@@ -33,7 +33,7 @@ public class AppResources {
 
 
 	public AppResources(){
-		mApkFile         = Files.mInputPath;
+		mApkFile         = Files.mInputApkFile;
 		mPackageName     = AppConfig.mPackageName;
 		mApkResourceDir  = Files.mApkResDir;
 		mMainValuesDir   = new File(mApkResourceDir+File.separator+"values");
