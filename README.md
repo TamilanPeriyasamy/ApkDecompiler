@@ -1,2 +1,2 @@
 # ApkDecompiler
- This tool decompile apk resources and rebuild.
+ This tool decode apk resources and rebuild them after making some modifications.
