@@ -16,8 +16,8 @@ public class ApkDecompiler {
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("ApkDecompiler decompile started...");
-		//new TestingModule().runTestBuild();
-
+		new TestingModule().runTestBuild();
+		
 		Files.refreshFilePath();
 		if(args.length<=2 ) {
 			System.err.println("args mismatched... ");

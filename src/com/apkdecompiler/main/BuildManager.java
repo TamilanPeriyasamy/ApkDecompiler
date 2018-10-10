@@ -9,6 +9,7 @@ import java.util.ArrayList;
 
 import org.apache.commons.io.FileUtils;
 
+import com.android.apksigner.ApkSignerTool;
 import com.apkdecompiler.filemanager.Files;
 
 /**
@@ -93,18 +94,22 @@ public class BuildManager extends Files {
 	}
 
 	public void signApkFile() throws Exception{
-		// "Sign an android apk file use a test certificate.");
+		//"Sign an android apk file use a test certificate.");
 		String mAliasName ="key0".trim() ,mKeyStorePass="Test@123".trim() ,mKeyPass="Test@123".trim();
 		String zipalignApkPath=apkZipalign(outputApkPath);
-		String runcommand=Files.mApkSigner+" sign --ks "+Files.mKeyStorePath+" --ks-key-alias "+mAliasName+" --ks-pass pass:"+mKeyStorePass+" --key-pass pass:"+mKeyPass+" --out "+debugApkPath+" "+zipalignApkPath;
 		System.out.println("Sign apk file ... ");
-		//System.out.println(""+runcommand);
-		if(!new CommandExecutor().executeCommand(runcommand,false)) {
-			System.err.println("Apk sign failed... ");
-			System.exit(0);
-		}
+		String key_args[]= {
+				"sign","--ks",Files.mKeyStorePath,
+				"--ks-key-alias",mAliasName,
+				"--ks-pass","pass:"+mKeyStorePass,
+				"--key-pass","pass:"+mKeyPass,
+				"--out",debugApkPath,
+				zipalignApkPath 
+				};
+		ApkSignerTool.main(key_args);
+		
 		if(new File(zipalignApkPath).exists()) {
-			new File(zipalignApkPath).delete();
+		   new File(zipalignApkPath).delete();
 		}
 	}
 

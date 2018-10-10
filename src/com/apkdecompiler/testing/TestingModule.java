@@ -26,14 +26,14 @@ public class TestingModule {
 
 	public void runTestBuild() throws Exception {
 		LogFile.toStartWrite();
-		Files.refreshFilePath();
-		String mInputApkPath="/home/lakeba13/MyDev/ActivityDeveloper.apk";
-		String mOutputDirPath="/home/lakeba13/workspace/ApkDecompiler-master/ApkDecompiler/debug";
+		Files.refreshFilePath();//Files.mUserDir+
+		String mInputApkPath=Files.mUserDir+"/test/ActivityDeveloper.apk";
+		String mOutputDirPath=Files.mUserDir+"/debug";
 		new DecompileManager(mInputApkPath,mOutputDirPath);
 		
 		Files.refreshFilePath();
-		String mInputDirPath="/home/lakeba13/workspace/ApkDecompiler-master/ApkDecompiler/debug/ActivityDeveloper";
-		String mOutputApkPath="/home/lakeba13/workspace/ApkDecompiler-master/ApkDecompiler/output/ActivityDeveloper.apk";
+		String mInputDirPath=Files.mUserDir+"/debug/ActivityDeveloper";
+		String mOutputApkPath=Files.mUserDir+"/output/ActivityDeveloper.apk";
 		new BuildManager(mInputDirPath,mOutputApkPath,true);
 		LogFile.toStopWrite();
 		System.out.println("=== ApkDecompiler ");

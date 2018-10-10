@@ -10,3 +10,5 @@ output/
 output/*
 tools/framework/
 tools/framework/*
+test/
+test/*
