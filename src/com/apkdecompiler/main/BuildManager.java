@@ -16,15 +16,15 @@ import com.apkdecompiler.filemanager.Files;
  *
  * 09-Oct-2018
  */
- public class BuildManager extends Files {
-	 
-	 
-	    public File mOutputApk         = null;
-		public File mOutputDir         = null;
-		public String mApkExtractPath  = null;
-		public String outputApkPath    = null;
-		public String debugApkPath     = null;
-		ArrayList<String> mRawFileList = new ArrayList<String>();
+public class BuildManager extends Files {
+
+
+	public File mOutputApk         = null;
+	public File mOutputDir         = null;
+	public String mApkExtractPath  = null;
+	public String outputApkPath    = null;
+	public String debugApkPath     = null;
+	ArrayList<String> mRawFileList = new ArrayList<String>();
 
 	/**
 	 * @param mInputPath
@@ -33,7 +33,7 @@ import com.apkdecompiler.filemanager.Files;
 	 * @throws Exception 
 	 */
 	public BuildManager(String mInputPath, String mOutputPath, boolean mSign) throws Exception {
-		
+
 		if(new File(mInputPath).isDirectory() && new File(mInputPath).exists()) {
 			if(new File(mOutputPath).getName().endsWith(".apk")) {
 				Files.mOutputApkFile  = new File(mOutputPath);
@@ -41,7 +41,6 @@ import com.apkdecompiler.filemanager.Files;
 				Files.mApkFileName    = Files.mOutputApkFile.getName().replace(".apk", "");
 				Files.mApkBuildDir    = new File(mInputPath);
 				buildApkFile();
-				
 			}else {
 				System.err.println(" output file is invalid "+mOutputPath);
 				System.exit(0);
@@ -54,14 +53,14 @@ import com.apkdecompiler.filemanager.Files;
 			signApkFile();
 		}
 	}
-	
+
 	public void buildApkFile() throws Exception {
 		System.out.println("\nBuild apk ...");
 		mOutputApk       = Files.mOutputApkFile;
 		mOutputDir       = new File(mOutputApk.getParent());
 		outputApkPath    = mOutputApk.getAbsolutePath();
 		debugApkPath     = mOutputApk.getAbsolutePath().replace(mOutputApk.getName(),"debug-"+mOutputApk.getName());
-	
+
 		String unsingApkFilePath=mOutputDir.getAbsolutePath()+File.separator+mOutputApk.getName();
 		if(new File(unsingApkFilePath).exists()) {
 			new File(unsingApkFilePath).delete();
@@ -70,7 +69,7 @@ import com.apkdecompiler.filemanager.Files;
 		mRawFileList.clear();
 		copyApkRawFiles(Files.mApkBuildDir,mOutputDir);
 		renamedPngImageFiles(Files.mApkBuildDir.getAbsolutePath());
-		
+		System.out.println(" "+unsingApkFilePath);
 		String runcommand=Files.mAAPTPath+" p -f -F "+unsingApkFilePath+" -I "+Files.mAndroidJarPath+" -S "+Files.mApkBuildDir.getAbsolutePath()+"/res "+" -M "+Files.mApkBuildDir.getAbsolutePath()+"/AndroidManifest.xml";
 		System.out.println("build apk resources ... ");
 		System.out.println(""+runcommand);
@@ -90,12 +89,11 @@ import com.apkdecompiler.filemanager.Files;
 				System.exit(0);
 			}
 		}
+		cleanOutputDir(mOutputDir);
 	}
 
-
-
-
 	public void signApkFile() throws Exception{
+		// "Sign an android apk file use a test certificate.");
 		String mAliasName ="key0".trim() ,mKeyStorePass="Test@123".trim() ,mKeyPass="Test@123".trim();
 		String zipalignApkPath=apkZipalign(outputApkPath);
 		String runcommand=Files.mApkSigner+" sign --ks "+Files.mKeyStorePath+" --ks-key-alias "+mAliasName+" --ks-pass pass:"+mKeyStorePass+" --key-pass pass:"+mKeyPass+" --out "+debugApkPath+" "+zipalignApkPath;
@@ -135,12 +133,9 @@ import com.apkdecompiler.filemanager.Files;
 		for (String fileNme : listofFiles) {
 			if( new File(mOutputDir+File.separator+fileNme).exists()) {
 				File currentFile=new File(mOutputDir+File.separator+fileNme);
-				if(currentFile.isDirectory()) {
-					FileUtils.deleteDirectory(currentFile);
-				}else {
-					if(currentFile.isFile() && !currentFile.getName().equals(mOutputApk.getName())) {
-						currentFile.delete();
-					}
+				if(!currentFile.getAbsolutePath().equals(outputApkPath.trim()) 
+						&& !currentFile.getAbsolutePath().equals(outputApkPath.trim())) {
+					Files.delete(currentFile);
 				}
 			}
 		}
@@ -167,7 +162,7 @@ import com.apkdecompiler.filemanager.Files;
 			} 
 		}
 	}
- 
+
 	private void renamedPngImageFiles(String resDirPath) throws IOException {
 		File inputPath =  new File(resDirPath);
 		if(inputPath.isDirectory()){
@@ -185,4 +180,4 @@ import com.apkdecompiler.filemanager.Files;
 			} 
 		}
 	}
- }
+}

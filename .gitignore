@@ -4,5 +4,9 @@ logs/
 logs/*
 libs/
 libs/*
+debug/
+debug/*
+output/
+output/*
 tools/framework/
 tools/framework/*

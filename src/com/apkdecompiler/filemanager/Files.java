@@ -4,6 +4,9 @@
 package com.apkdecompiler.filemanager;
 
 import java.io.File;
+import java.io.IOException;
+
+import org.apache.commons.io.FileUtils;
 
 import com.apkdecompiler.main.ApkDecompiler;
 
@@ -14,6 +17,8 @@ import com.apkdecompiler.main.ApkDecompiler;
  */
 
 public class Files {
+	
+	
 	public static String mUserDir         = System.getProperty("user.dir");
 	public static String mToolsPath       = mUserDir+File.separator+"tools";
 	public static String mBuildToolsPath  = mToolsPath+File.separator+"build-tools";
@@ -32,9 +37,41 @@ public class Files {
 	public static File mOutputApkFile    = null;
 	public static File mInputDirectory   = null;
 	public static File mOutputDirectory  = null;
-	public static String mApkFileName    = null;
 	public static File mApkBuildDir      = null;
-	public static File mApkResDir        = null;//
+	public static File mApkResDir        = null;
+	public static String mApkFileName    = null;
+	
+	public static void refreshFilePath(){
+		mInputApkFile     = null;
+		mOutputApkFile    = null;
+		mInputDirectory   = null;
+		mOutputDirectory  = null;
+		mApkBuildDir      = null;
+		mApkResDir        = null;
+		mApkFileName    = null;
+	}
+	
+	/**
+	 * @param mApkBuildDir2 
+	 * @throws IOException 
+	 * 
+	 */
+	public static void cleanDirectory(File directory) throws IOException {
+		FileUtils.cleanDirectory(directory);
+	}
+
+	/**
+	 * @param file
+	 * @throws IOException 
+	 */
+	public static void delete(File file) throws IOException {
+		if(file.isDirectory() ) {
+			FileUtils.deleteDirectory(file);
+		}
+		if(file.isFile()) {
+			FileUtils.forceDelete(file);
+		}
+	}
 	
 	//public static File mInputPath   = new File(ApkDecompiler.mInputPath);
 	//public static File mOutputPath  = new File(ApkDecompiler.mOutputPath);

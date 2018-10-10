@@ -1,39 +1,31 @@
 package com.apkdecompiler.main;
 
-import java.io.File;
-
 import com.apkdecompiler.filemanager.Files;
-import com.apkdecompiler.logger.LogFile;
-import com.apkdecompiler.resources.AndroidResources;
-import com.apkdecompiler.resources.AppConfig;
-import com.apkdecompiler.resources.AppResources;
-import com.apkdecompiler.xmlbuilder.DecodeResXMLFiles;
+import com.apkdecompiler.testing.TestingModule;
 
 public class ApkDecompiler {
 
 
-	public static String  mInputPath   = null;
-	//public static String  mInputDir    = null;
-	public static String  mOutputPath  = null;
-	//public static String  mOutputDir   = null;
-	public static boolean mApkDecompile   = false;
-	public static boolean mApkBuild      = false;
-	public static boolean mSign        = false;
-	public static String  mAndSdkPath  = null;
+	public static String  mInputPath    = null;
+	public static String  mOutputPath   = null;
+	public static boolean mApkDecompile = false;
+	public static boolean mApkBuild     = false;
+	public static boolean mSign         = false;
+	public static String  mAndSdkPath   = null;
 
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("ApkDecompiler decompile started...");
-		LogFile.toStartWrite();
+		//new TestingModule().runTestBuild();
 
-		//ApkManager.cleanAppDir();
+		Files.refreshFilePath();
 		if(args.length<=2 ) {
 			System.err.println("args mismatched... ");
 			System.exit(0);
 		}
 
 		for(int count=0;count<args.length;count++) {
-			
+
 			if( args[0].equals("decompile") || args[0].equals("d") ) { // build or decompile
 				mApkDecompile=true;
 			}else if( args[0].equals("build") || args[0].equals("b")) { // build or decompile
@@ -42,40 +34,39 @@ public class ApkDecompiler {
 				System.err.println("invalid  args[]... ");
 				System.exit(0);
 			}
-			
+
 			if(args[count].equals("-sign")) { // mSign 
 				mSign=true;
 			}	
 
 			if(args[count].equals("-in")) { // mInputFile or mInputDir
 				if(args[count+1]!=null && !args[count+1].isEmpty()) {
-				  mInputPath = args[count+1].trim();
+					mInputPath = args[count+1].trim();
 				}else {
 					System.err.println("invalid  args[]... ");
 					System.exit(0);
 				}
-				
+
 			}
-			
+
 			if(args[count].equals("-out")) { // mOutputFile or mOutputDir
 				if(args[count+1]!=null && !args[count+1].isEmpty()) {
-				mOutputPath = args[count+1].trim();
+					mOutputPath = args[count+1].trim();
 				}else {
 					System.err.println("invalid  args[]... ");
 					System.exit(0);
 				}
 			}
 		}
-		
-		if(mApkDecompile) {
-		  new DecompileManager(mInputPath,mOutputPath);
-		}
 
-		if(mApkBuild) {
-		  new BuildManager(mInputPath,mOutputPath,mSign); 
+		if(mApkDecompile) {
+			new DecompileManager(mInputPath,mOutputPath);
+		}else if(mApkBuild) {
+			new BuildManager(mInputPath,mOutputPath,mSign); 
+		}else {
+			System.err.println("args mismatched... ");
+			System.exit(0);
 		}
-		
-		LogFile.toStopWrite();
 		System.out.println("ApkDecompiler decompile completed..");
 	}
 }

@@ -44,6 +44,7 @@ public class DecompileManager extends Files {
 				if(!Files.mApkBuildDir.exists()) {
 					Files.mApkBuildDir.mkdirs();
 				}
+				Files.cleanDirectory(Files.mApkBuildDir);
 				decompileApkFile();
 			}else {
 				System.err.println(" output dir is invalid "+mOutputPath);
