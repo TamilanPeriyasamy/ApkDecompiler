@@ -11,9 +11,9 @@
     ApkDecompiler build -in app-dir -out app.apk 
 
 ### COMMANDS
-    d or decompile       Decompile the provided APK resources
-    b or build           Build decompiled APK resources files
-    -in                  Input file or Input Directory
-    -out                 Output file or Output Directory
-    -sign                Sign the provided APK (use a test certificate)
-    -help                Show this usage page and exit
+    decompile   Decompile the provided APK resources
+    build       Build decompiled APK resources files
+    -in         Input file or Input Directory
+    -out        Output file or Output Directory
+    -sign       Sign the provided APK (use a test certificate)
+    -help       Show this usage page and exit
