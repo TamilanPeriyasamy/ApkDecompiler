@@ -1,7 +1,7 @@
 # ApkDecompiler
  This tool decode apk resources and rebuild them after making some modifications.
  
-# USAGE: ApkDecompiler <command> [options]
+# USAGE: ApkDecompiler < command > [options]
 
      ApkDecompiler decompile
      ApkDecompiler build
