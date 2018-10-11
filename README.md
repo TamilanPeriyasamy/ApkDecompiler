@@ -9,6 +9,7 @@
 ### EXAMPLE:
     ApkDecompiler decompile -in app.apk -out app-dir
     ApkDecompiler build -in app-dir -out app.apk 
+    ApkDecompiler build -sign -in app-dir -out app.apk 
 
 ### COMMANDS
     decompile   Decompile the provided APK resources
@@ -16,4 +17,3 @@
     -in         Input file or Input Directory
     -out        Output file or Output Directory
     -sign       Sign the provided APK (use a test certificate)
-    -help       Show this usage page and exit
