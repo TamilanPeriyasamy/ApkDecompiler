@@ -8,7 +8,9 @@ debug/
 debug/*
 output/
 output/*
-tools/framework/
-tools/framework/*
+out/
+out/*
 test/
 test/*
+src/main/resources/
+src/main/resources/*
