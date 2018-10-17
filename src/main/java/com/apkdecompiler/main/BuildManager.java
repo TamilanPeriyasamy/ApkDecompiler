@@ -73,7 +73,7 @@ public class BuildManager extends Files {
 		System.out.println(" "+unsingApkFilePath);
 		String runcommand=Files.mAAPTPath+" p -f -F "+unsingApkFilePath+" -I "+Files.mAndroidJarPath+" -S "+Files.mApkBuildDir.getAbsolutePath()+"/res "+" -M "+Files.mApkBuildDir.getAbsolutePath()+"/AndroidManifest.xml";
 		System.out.println("build apk resources ... ");
-		System.out.println(""+runcommand);
+		//System.out.println(""+runcommand);
 		if(!new CommandExecutor().executeCommand(runcommand,false)) {
 			System.err.println("Apk build failed... ");
 			System.exit(0);

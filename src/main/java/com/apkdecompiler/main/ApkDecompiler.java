@@ -1,7 +1,8 @@
 package com.apkdecompiler.main;
 
 import com.apkdecompiler.filemanager.Files;
-import com.apkdecompiler.testing.TestingModule;
+import com.apkdecompiler.filemanager.JarFiles;
+
 
 public class ApkDecompiler {
 
@@ -16,7 +17,7 @@ public class ApkDecompiler {
 	public static void main(String[] args) throws Exception {
 
 		System.out.println("ApkDecompiler decompile started...");
-		//new TestingModule().runTestBuild();
+		new JarFiles().loadBuildTools();
 		Files.refreshFilePath();
 		if(args.length<=2 ) {
 			System.err.println("args mismatched... ");

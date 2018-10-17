@@ -14,3 +14,5 @@ test/
 test/*
 src/main/resources/
 src/main/resources/*
+src/test/resources/
+src/test/resources/*

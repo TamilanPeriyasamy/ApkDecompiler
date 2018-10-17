@@ -27,7 +27,7 @@ public class AppConfig {
 		
 		ArrayList<String> inputStreamList=new CommandExecutor(mApkFile).getAppConfig("dump badging");
 		for(int lineCount=0;lineCount<inputStreamList.size();lineCount++) {
-			//System.out.println(""+inputStreamList.get(lineCount));
+			System.out.println(""+inputStreamList.get(lineCount));
 			String line=inputStreamList.get(lineCount);
 			if(line.trim().startsWith("package: ")) {
 				System.out.println("App Details = "+inputStreamList.get(lineCount));

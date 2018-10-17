@@ -20,20 +20,12 @@ public class Files {
 	
 	
 	public static String mUserDir         = System.getProperty("user.dir");
-	public static String mToolsPath       = mUserDir+File.separator+"tools";
-	public static String mResourcesDir    = mUserDir+File.separator+"src/main/resources";
-	public static String mBuildToolsPath  = mResourcesDir+File.separator+"build-tools";
-	public static String mAAPTPath        = mBuildToolsPath+File.separator+"aapt";
-	public static String mZipalign        = mBuildToolsPath+File.separator+"zipalign";
-	public static String mApkSigner       = mBuildToolsPath+File.separator+"apksigner";
-	public static String mKeyStorePath    = mBuildToolsPath+File.separator+"key-store.jks";
+	public static String mAAPTPath        = "/tmp/build-tools/aapt";
+	public static String mZipalign        = "/tmp/build-tools/zipalign";
+	public static String mKeyStorePath    = "/tmp/build-tools/key-store.jks";
+	public static String mAndroidJarPath  = "/tmp/build-tools/lib/android.jar";
 	public static String mAndroidSdkPath  = ApkDecompiler.mAndSdkPath;
-	public static String mAndroidJarPath  = mBuildToolsPath+File.separator+"lib"+File.separator+"android.jar";
-	/*mAndroidAAPTPath = mAndroidSdkPath+"/build-tools/28.0.2/aapt";
-	mZipalign        = mAndroidSdkPath+"/build-tools/28.0.2/zipalign";
-	mApkSigner       = mAndroidSdkPath+"/build-tools/28.0.2/apksigner";
-	mAndroidJarPath  = mAndroidSdkPath+"/platforms/android-28/android.jar";*/
-	
+
 	public static File mInputApkFile     = null;
 	public static File mOutputApkFile    = null;
 	public static File mInputDirectory   = null;
@@ -49,7 +41,11 @@ public class Files {
 		mOutputDirectory  = null;
 		mApkBuildDir      = null;
 		mApkResDir        = null;
-		mApkFileName    = null;
+		mApkFileName      = null;
+	}
+
+	public  String getPath(String findPath,Class mClass) throws IOException {
+		return  mClass.getResource(findPath).getPath();
 	}
 	
 	/**
@@ -73,10 +69,5 @@ public class Files {
 			FileUtils.forceDelete(file);
 		}
 	}
-	
-	//public static File mInputPath   = new File(ApkDecompiler.mInputPath);
-	//public static File mOutputPath  = new File(ApkDecompiler.mOutputPath);
-	//public static String mApkFileName    = mInputPath.getName().replace(".apk","");
-	
-	
+
 }

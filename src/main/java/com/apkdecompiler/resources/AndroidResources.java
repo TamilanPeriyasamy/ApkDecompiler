@@ -19,15 +19,11 @@ public class AndroidResources {
 	File mApkFile = null;
 	public static HashMap<String,String> mAndroidResourcesMap      = new HashMap<String,String>();
 	public static HashMap<String,String> mAndroidResourceKeys      = new HashMap<String,String>();
-	
 	public static HashMap<String,String> mAndroidAttrResourceTypes = new HashMap<String,String>();
 	public static HashMap<String,String> mAndroidAttrResourceArray = new HashMap<String,String>();
 
-
-	//public static String mAttributeRawType = null;
-	//public static String mAttributeValue   = null;
 	public AndroidResources(){
-		mApkFile=new File(Files.mResourcesDir+"/framework/decode.apk");
+		mApkFile=new File(getClass().getResource("/framework/decode.apk").getPath());
 	}
 
 	public void parseAndroidSdkResources() throws Exception {

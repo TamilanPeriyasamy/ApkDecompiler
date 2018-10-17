@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 import com.apkdecompiler.filemanager.Files;
+import com.apkdecompiler.filemanager.JarFiles;
 
 public class CommandExecutor {
 
@@ -16,7 +17,7 @@ public class CommandExecutor {
 
 	public CommandExecutor(File apkfile){
 		mApkFile=apkfile;
-	}
+    }
 
 	public boolean executeCommand(String runCommand,boolean printLog) throws Exception {
 		Runtime rt	= Runtime.getRuntime();
