@@ -23,7 +23,7 @@ public class AndroidResources {
 	public static HashMap<String,String> mAndroidAttrResourceArray = new HashMap<String,String>();
 
 	public AndroidResources(){
-		mApkFile=new File(getClass().getResource("/framework/decode.apk").getPath());
+		mApkFile=new File(Files.mFrameworkPath);
 	}
 
 	public void parseAndroidSdkResources() throws Exception {

@@ -12,9 +12,10 @@ public class JarFiles {
     public String mKeyStorePath   = "/build-tools/key-store.jks";
     public String mLibcPath       = "/build-tools/lib64/libc++.so";
     public String mAndroidJarPath = "/build-tools/lib/android.jar";
+    public String mFrameworkPath  = "/framework/decode.apk";
 
     public void loadBuildTools() throws Exception {
-        String toolsPath[] = {mAAPTPath, mZipalign, mKeyStorePath, mLibcPath, mAndroidJarPath};
+        String toolsPath[] = {mAAPTPath, mZipalign, mKeyStorePath, mLibcPath, mAndroidJarPath,mFrameworkPath};
         String tmpDirPath = "/tmp/";
         for (int count = 0; count < toolsPath.length; count++) {
             dumpBuildTools(tmpDirPath, toolsPath[count], getClass());

@@ -24,6 +24,7 @@ public class Files {
 	public static String mZipalign        = "/tmp/build-tools/zipalign";
 	public static String mKeyStorePath    = "/tmp/build-tools/key-store.jks";
 	public static String mAndroidJarPath  = "/tmp/build-tools/lib/android.jar";
+	public static String mFrameworkPath   = "/tmp/framework/decode.apk";
 	public static String mAndroidSdkPath  = ApkDecompiler.mAndSdkPath;
 
 	public static File mInputApkFile     = null;
