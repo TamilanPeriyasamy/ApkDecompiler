@@ -5,11 +5,7 @@
 ### USAGE: ApkDecompiler < command > [options]
     ApkDecompiler decompile
     ApkDecompiler build
-    
-### DOWNLOAD JAR 
-    [ApkDecompiler.jar](https://github.com/TamilanPeriyasamy/ApkDecompiler/raw/master/out/ApkDecompiler.jar)    
-    
-
+  
 ### EXAMPLE:
     java -jar ApkDecompiler.jar decompile    -in app.apk   -out app-dir
     java -jar ApkDecompiler.jar build        -in app-dir   -out app.apk 
@@ -21,3 +17,7 @@
     -in         Input file or Input Directory
     -out        Output file or Output Directory
     -sign       Sign the provided APK (use a test certificate)
+
+    
+### DOWNLOAD JAR 
+  [ApkDecompiler.jar](https://github.com/TamilanPeriyasamy/ApkDecompiler/raw/master/out/ApkDecompiler.jar)  
