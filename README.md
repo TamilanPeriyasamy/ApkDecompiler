@@ -6,7 +6,8 @@
     ApkDecompiler decompile
     ApkDecompiler build
     
-### DOWNLOAD JAR [ApkDecompiler.jar] https://github.com/TamilanPeriyasamy/ApkDecompiler/raw/master/out/ApkDecompiler.jar    
+### DOWNLOAD JAR 
+    [ApkDecompiler.jar] https://github.com/TamilanPeriyasamy/ApkDecompiler/raw/master/out/ApkDecompiler.jar    
     
 
 ### EXAMPLE:
