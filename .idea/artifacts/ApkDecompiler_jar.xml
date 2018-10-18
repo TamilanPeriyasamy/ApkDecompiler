@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="ApkDecompiler:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/ApkDecompiler_jar</output-path>
+    <output-path>$PROJECT_DIR$/out/</output-path>
     <root id="archive" name="ApkDecompiler.jar">
       <element id="module-output" name="ApkDecompiler_main" />
       <element id="extracted-dir" path="$USER_HOME$/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar" path-in-jar="/" />

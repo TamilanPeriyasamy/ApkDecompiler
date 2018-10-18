@@ -8,8 +8,10 @@ debug/
 debug/*
 output/
 output/*
-out/
-out/*
+out/production/
+out/production/*
+out/test/
+out/test/*
 test/
 test/*
 src/main/resources/
