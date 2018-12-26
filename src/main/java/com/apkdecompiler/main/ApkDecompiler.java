@@ -24,6 +24,17 @@ public class ApkDecompiler {
 			System.exit(0);
 		}
 
+		/* decompile
+		 -in  ApkDecompiler/test/ActivityDeveloper.apk
+		 -out ApkDecompiler/debug
+		*/
+
+
+		/* build
+		 -in  ApkDecompiler/debug
+		 -out ApkDecompiler/output/ActivityDeveloper.apk
+		*/
+
 		for(int count=0;count<args.length;count++) {
 
 			if( args[0].equals("decompile") || args[0].equals("d") ) { // build or decompile

@@ -23,6 +23,7 @@ public class AndroidResources {
 	public static HashMap<String,String> mAndroidAttrResourceArray = new HashMap<String,String>();
 
 	public AndroidResources(){
+		System.out.println("STDOUT mFrameworkPath "+Files.mFrameworkPath);
 		mApkFile=new File(Files.mFrameworkPath);
 	}
 
@@ -44,7 +45,7 @@ public class AndroidResources {
 		for(int parserCount=0;parserCount<dumpResourcesInputStream.size();parserCount++) {
 
 			String currentParser=dumpResourcesInputStream.get(parserCount);
-			//System.out.println(" "+currentLine.trim());
+			System.out.println(" "+currentParser);
 			if(currentParser.trim().startsWith("Package ") && currentParser.contains("id=") && currentParser.contains(" packageCount=")) {
 				/*** Package Group 0 id=0x7f packageCount=1 name=com.quixxi.audiodemo */
 				AppConfig.mAndPackageId=currentParser.substring(currentParser.indexOf("id=")+3, currentParser.indexOf(" packageCount=")).trim();
